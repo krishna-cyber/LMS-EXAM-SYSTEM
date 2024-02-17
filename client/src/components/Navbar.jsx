@@ -1,7 +1,6 @@
 /** @format */
 
 import { Input } from "antd";
-import { IoMenuOutline } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import { IoMdNotifications } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
@@ -11,8 +10,7 @@ const { Search } = Input;
 const Navbar = () => {
   return (
     <>
-      <nav className=' bg-[#BC6C25] p-4 flex items-center justify-around  '>
-        <IoMenuOutline className=' text-4xl text-white' />
+      <nav className=' w-full  p-1  flex items-center justify-around  '>
         <div className='branding flex gap-3 text-white items-center'>
           <img className=' h-12 w-12' src={Logo} alt='logo' />
           <div className=' flex flex-col'>

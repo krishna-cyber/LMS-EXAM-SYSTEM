@@ -1,6 +1,7 @@
 /** @format */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Navbar from "../components/Navbar";
 import { RxDashboard } from "react-icons/rx";
 import { TbLamp2 } from "react-icons/tb";
 import { GrResources } from "react-icons/gr";
@@ -49,26 +50,41 @@ const Dashboard = () => {
                 key: "1",
                 icon: <RxDashboard />,
                 label: "Dashboard",
+                onClick: () => {
+                  console.log("clicked dashboard");
+                },
               },
               {
                 key: "2",
                 icon: <TbLamp2 />,
                 label: "Study ",
+                onClick: () => {
+                  console.log("clicked study");
+                },
               },
               {
                 key: "3",
                 icon: <GrResources />,
                 label: "Resources",
+                onClick: () => {
+                  console.log("clicked resources");
+                },
               },
               {
                 key: "4",
                 icon: <PiExam />,
                 label: "All Exams",
+                onClick: () => {
+                  console.log("clicked exam");
+                },
               },
               {
                 key: "5",
                 icon: <MdOutlineVideocam className=' text-2xl' />,
                 label: "Live Course",
+                onClick: () => {
+                  console.log("clicked live course");
+                },
               },
             ]}
           />
@@ -77,18 +93,24 @@ const Dashboard = () => {
           <Header
             style={{
               padding: 0,
-              background: colorBgContainer,
+              background: "#BC6C25",
+              display: "flex",
+              justifyContent: "space-between",
             }}>
-            <Button
-              type='text'
-              icon={collapsed ? <IoMenuOutline /> : <IoMenuOutline />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
-              }}
-            />
+            <div className=' flex w-full'>
+              <Button
+                type='text'
+                icon={collapsed ? <IoMenuOutline /> : <IoMenuOutline />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  color: "white",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+              <Navbar />
+            </div>
           </Header>
           <Content
             style={{
