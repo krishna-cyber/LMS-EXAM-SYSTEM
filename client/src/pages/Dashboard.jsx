@@ -21,7 +21,7 @@ const Dashboard = () => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: "#BC6C25",
+          colorPrimary: "#606C38",
         },
         components: {
           Layout: {
