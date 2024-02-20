@@ -9,6 +9,7 @@ import { MdOutlineVideocam } from "react-icons/md";
 import { PiExam } from "react-icons/pi";
 import { IoMenuOutline } from "react-icons/io5";
 import { Layout, Menu, Button, theme, ConfigProvider } from "antd";
+import { Outlet } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const Dashboard = () => {
   const count = useSelector((state) => state.counter.value);
@@ -120,7 +121,8 @@ const Dashboard = () => {
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}>
-            Content
+            content
+            <Outlet />
           </Content>
         </Layout>
       </Layout>
