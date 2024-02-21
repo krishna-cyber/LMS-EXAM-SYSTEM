@@ -5,13 +5,15 @@ import Navbar from "../components/Navbar";
 import { RxDashboard } from "react-icons/rx";
 import { TbLamp2 } from "react-icons/tb";
 import { GrResources } from "react-icons/gr";
-import { MdOutlineVideocam } from "react-icons/md";
+import { GrChapterAdd } from "react-icons/gr";
+
 import { PiExam } from "react-icons/pi";
 import { IoMenuOutline } from "react-icons/io5";
 import { Layout, Menu, Button, theme, ConfigProvider } from "antd";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const Dashboard = () => {
+  const Navigate = useNavigate();
   const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
@@ -42,7 +44,7 @@ const Dashboard = () => {
           <div className='demo-logo-vertical' />
 
           <Menu
-            className=' p-2 text-xl text-[#BC6C25] bg-[#FFF9CF] '
+            className=' p-2 text-lg text-[#BC6C25] bg-[#FFF9CF] '
             theme='dark'
             mode='inline'
             defaultSelectedKeys={["1"]}
@@ -52,15 +54,15 @@ const Dashboard = () => {
                 icon: <RxDashboard />,
                 label: "Dashboard",
                 onClick: () => {
-                  console.log("clicked dashboard");
+                  Navigate("/dashboard");
                 },
               },
               {
                 key: "2",
                 icon: <TbLamp2 />,
-                label: "Study ",
+                label: "Study",
                 onClick: () => {
-                  console.log("clicked study");
+                  Navigate("/study");
                 },
               },
               {
@@ -68,7 +70,7 @@ const Dashboard = () => {
                 icon: <GrResources />,
                 label: "Resources",
                 onClick: () => {
-                  console.log("clicked resources");
+                  Navigate("/resources");
                 },
               },
               {
@@ -76,15 +78,15 @@ const Dashboard = () => {
                 icon: <PiExam />,
                 label: "All Exams",
                 onClick: () => {
-                  console.log("clicked exam");
+                  Navigate("/exams");
                 },
               },
               {
                 key: "5",
-                icon: <MdOutlineVideocam className=' text-2xl' />,
-                label: "Live Course",
+                icon: <GrChapterAdd className=' text-2xl' />,
+                label: "Chapter Test",
                 onClick: () => {
-                  console.log("clicked live course");
+                  Navigate("/chapter-test");
                 },
               },
             ]}
@@ -116,12 +118,11 @@ const Dashboard = () => {
           <Content
             style={{
               margin: "24px 16px",
-              padding: 24,
+              padding: 20,
               minHeight: 280,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}>
-            content
             <Outlet />
           </Content>
         </Layout>
