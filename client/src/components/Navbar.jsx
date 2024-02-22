@@ -53,6 +53,7 @@ const Navbar = () => {
             <div onClick={(e) => e.preventDefault()}>
               <Avatar
                 size='large'
+                src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
                 icon={<FaUserCircle className=' text-4xl text-white' />}
               />
             </div>

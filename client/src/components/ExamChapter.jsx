@@ -2,9 +2,11 @@
 
 import { Avatar, Button, Card, Tag, Image } from "antd";
 import Logo from "../assets/Logo.png";
+import { Navigate, useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
 const Exams = () => {
+  const Navigate = useNavigate();
   return (
     <>
       <div className=' overflow-y-auto w-full h-full'>
@@ -184,7 +186,12 @@ const Exams = () => {
               </div>
             }
             actions={[
-              <Button className=' w-[45%]' size='medium'>
+              <Button
+                className=' w-[45%]'
+                size='medium'
+                onClick={() => {
+                  Navigate("/exam_start/:id");
+                }}>
                 Start Exam
               </Button>,
             ]}>

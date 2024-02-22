@@ -12,6 +12,7 @@ import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Exams from "./components/Exams.jsx";
 import ExamChapter from "./components/ExamChapter.jsx";
+import ExamInstruction from "./components/ExamInstruction.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "chapter-test",
         element: <ExamChapter />,
+      },
+      {
+        path: "exam_start/:id",
+        element: <ExamInstruction />,
       },
     ],
   },
