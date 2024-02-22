@@ -1,10 +1,29 @@
 /** @format */
 
-import { Input } from "antd";
+import { Input, Dropdown, Avatar } from "antd";
 import { TiMessages } from "react-icons/ti";
 import { IoMdNotifications } from "react-icons/io";
 import { FaUserCircle } from "react-icons/fa";
+import { SlLogout } from "react-icons/sl";
 import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+const items = [
+  {
+    icon: <FaUserCircle />,
+    size: "large",
+    onClick: () => console.log("Profile"),
+    label: "Profile",
+    key: "1",
+  },
+  {
+    icon: <SlLogout />,
+    onClick: () => console.log("Logout"),
+    size: "large",
+    label: "Logout",
+
+    key: "2",
+  },
+];
 
 const { Search } = Input;
 const Navbar = () => {
@@ -27,10 +46,17 @@ const Navbar = () => {
           onSearch={(value) => console.log(value)}
         />
 
-        <div className='icons flex gap-4'>
+        <div className='icons flex items-center gap-4'>
           <TiMessages className=' text-4xl text-white' />
           <IoMdNotifications className=' text-4xl text-white' />
-          <FaUserCircle className=' text-4xl text-white' />
+          <Dropdown menu={{ items }} placement='bottom' arrow>
+            <div onClick={(e) => e.preventDefault()}>
+              <Avatar
+                size='large'
+                icon={<FaUserCircle className=' text-4xl text-white' />}
+              />
+            </div>
+          </Dropdown>
         </div>
       </nav>
     </>
