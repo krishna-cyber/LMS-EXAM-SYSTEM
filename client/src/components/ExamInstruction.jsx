@@ -21,7 +21,7 @@ const ExamInstruction = () => {
           </span>
           <span>
             <span className='  font-semibold'>Name of Student: </span>
-            <span>20</span>
+            <span>Krishna Tiwari</span>
           </span>
           <span>
             <span className='  font-semibold'>Exam Id: </span>
