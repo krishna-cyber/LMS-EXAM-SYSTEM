@@ -1,6 +1,7 @@
 /** @format */
 import { Card, Avatar, Button, Modal } from "antd";
 import { useState } from "react";
+import FullScreenExam from "./FullScreenExam";
 
 const ExamInstruction = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,12 +28,7 @@ const ExamInstruction = () => {
             <span className='  font-semibold'>Exam Id: </span>
             <span> IbD45</span>
           </span>
-          <Button
-            type='primary'
-            className=' w-[25%] text-lg font-medium'
-            onClick={() => setModalOpen(true)}>
-            Start Exam
-          </Button>
+          <FullScreenExam />
           {/* create a cancel button */}
           <Button>Cancel</Button>
         </div>
@@ -52,7 +48,7 @@ const ExamInstruction = () => {
           <li>You can not go back to previous question</li>
         </ol>
       </Card>
-      <Modal
+      {/* <Modal
         title='Exam Start Confirmation'
         centered
         open={modalOpen}
@@ -62,7 +58,7 @@ const ExamInstruction = () => {
           Are you sure you want to start the exam? Once you start the exam you
           can not go back.
         </p>
-      </Modal>
+      </Modal> */}
     </>
   );
 };
