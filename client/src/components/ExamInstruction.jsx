@@ -1,7 +1,7 @@
 /** @format */
 import { Card, Avatar, Button, Modal } from "antd";
 import { useState } from "react";
-import FullScreenExam from "./FullScreenExam";
+import FullScreenExam from "./ExamConfirmation";
 
 const ExamInstruction = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,7 +48,7 @@ const ExamInstruction = () => {
           <li>You can not go back to previous question</li>
         </ol>
       </Card>
-      {/* <Modal
+      <Modal
         title='Exam Start Confirmation'
         centered
         open={modalOpen}
@@ -58,7 +58,7 @@ const ExamInstruction = () => {
           Are you sure you want to start the exam? Once you start the exam you
           can not go back.
         </p>
-      </Modal> */}
+      </Modal>
     </>
   );
 };

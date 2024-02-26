@@ -13,7 +13,8 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Exams from "./components/Exams.jsx";
 import ExamChapter from "./components/ExamChapter.jsx";
 import ExamInstruction from "./components/ExamInstruction.jsx";
-
+import { useSelector } from "react-redux";
+import ExamQuestions from "./components/ExamQuestions.jsx";
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -45,11 +46,11 @@ const router = createBrowserRouter([
         path: "chapter-test",
         element: <ExamChapter />,
       },
-      {
-        path: "exam_start/:id",
-        element: <ExamInstruction />,
-      },
     ],
+  },
+  {
+    path: "exam_start/:id",
+    element: <ExamQuestions />,
   },
 ]);
 
