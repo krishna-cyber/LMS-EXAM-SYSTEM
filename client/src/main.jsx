@@ -52,6 +52,10 @@ const router = createBrowserRouter([
     path: "exam_start/:id",
     element: <ExamQuestions />,
   },
+  {
+    path: "exam/:id",
+    element: <ExamQuestions />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
