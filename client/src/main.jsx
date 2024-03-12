@@ -11,14 +11,28 @@ import ErrorPage from "./error-page.jsx";
 import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Exams from "./components/Exams.jsx";
+import QuestionForm from "./components/QuestionForm.jsx";
 import ExamChapter from "./components/ExamChapter.jsx";
-import ExamInstruction from "./components/ExamInstruction.jsx";
 import { useSelector } from "react-redux";
 import ExamQuestions from "./components/ExamQuestions.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import SetPost from "./components/SetPost.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/form",
+    element: <QuestionForm />,
     errorElement: <ErrorPage />,
   },
   {
@@ -59,11 +73,10 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ToastContainer />
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </Provider>
 );

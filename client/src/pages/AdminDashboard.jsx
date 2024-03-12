@@ -1,5 +1,5 @@
 /** @format */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import { RxDashboard } from "react-icons/rx";
@@ -12,26 +12,14 @@ import { IoMenuOutline } from "react-icons/io5";
 import { Layout, Menu, Button, theme, ConfigProvider } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
-import { getCurrentUser } from "../features/auth/authActions";
 const Dashboard = () => {
-  // check the user is logged in or not and show login page if not logged in
-
-  const dispatch = useDispatch();
   const Navigate = useNavigate();
-
-  const { user } = useSelector((state) => state.auth);
-  console.log(user);
-
-  useEffect(() => {
-    if (!user) {
-      dispatch(getCurrentUser());
-    }
-  }, [user]);
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
   return (
     <ConfigProvider
       theme={{
