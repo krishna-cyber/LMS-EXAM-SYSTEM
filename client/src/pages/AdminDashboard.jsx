@@ -2,19 +2,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
-import { RxDashboard } from "react-icons/rx";
-import { TbLamp2 } from "react-icons/tb";
-import { GrResources } from "react-icons/gr";
-import { GrChapterAdd } from "react-icons/gr";
-
+import { PiStudent } from "react-icons/pi";
+import { SiMicrosoftexcel } from "react-icons/si";
+import { MdDashboardCustomize } from "react-icons/md";
 import { PiExam } from "react-icons/pi";
 import { IoMenuOutline } from "react-icons/io5";
 import { Layout, Menu, Button, theme, ConfigProvider } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
-const Dashboard = () => {
+const AdminDashboard = () => {
   const Navigate = useNavigate();
-  const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -51,42 +48,34 @@ const Dashboard = () => {
             items={[
               {
                 key: "1",
-                icon: <RxDashboard />,
+                icon: <MdDashboardCustomize />,
                 label: "Dashboard",
                 onClick: () => {
-                  Navigate("/dashboard");
+                  Navigate("/admin/dashboard");
                 },
               },
               {
                 key: "2",
-                icon: <TbLamp2 />,
-                label: "Study",
+                icon: <PiStudent />,
+                label: "Add Student",
                 onClick: () => {
-                  Navigate("/study");
+                  Navigate("/admin/add-student");
                 },
               },
               {
                 key: "3",
-                icon: <GrResources />,
-                label: "Resources",
+                icon: <SiMicrosoftexcel />,
+                label: "Student Results",
                 onClick: () => {
-                  Navigate("/resources");
+                  Navigate("/admin/student-results");
                 },
               },
               {
                 key: "4",
                 icon: <PiExam />,
-                label: "All Exams",
+                label: "Add Exam",
                 onClick: () => {
-                  Navigate("/exams");
-                },
-              },
-              {
-                key: "5",
-                icon: <GrChapterAdd className=' text-2xl' />,
-                label: "Chapter Test",
-                onClick: () => {
-                  Navigate("/chapter-test");
+                  Navigate("/admin/add-exam");
                 },
               },
             ]}
@@ -130,4 +119,4 @@ const Dashboard = () => {
     </ConfigProvider>
   );
 };
-export default Dashboard;
+export default AdminDashboard;

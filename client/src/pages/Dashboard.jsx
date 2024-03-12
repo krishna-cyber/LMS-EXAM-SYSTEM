@@ -19,14 +19,14 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.auth);
-  console.log(user);
-
+  const { error } = useSelector((state) => state.auth);
   useEffect(() => {
-    if (!user) {
-      dispatch(getCurrentUser());
-    }
-  }, [user]);
+    dispatch(getCurrentUser());
+  }, []);
+
+  if (error) {
+    Navigate("/login");
+  }
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },

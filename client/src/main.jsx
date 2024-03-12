@@ -13,11 +13,11 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Exams from "./components/Exams.jsx";
 import QuestionForm from "./components/QuestionForm.jsx";
 import ExamChapter from "./components/ExamChapter.jsx";
-import { useSelector } from "react-redux";
 import ExamQuestions from "./components/ExamQuestions.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SetPost from "./components/SetPost.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
+import StudentRegisterForm from "./components/StudentRegisterForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +27,26 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Login />,
+    element: <AdminDashboard />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/admin/dashboard",
+        element: <p>Hello study</p>,
+      },
+      {
+        path: "/admin/add-student",
+        element: <StudentRegisterForm />,
+      },
+      {
+        path: "/admin/student-results",
+        element: <p>Student Results</p>,
+      },
+      {
+        path: "/admin/add-exam",
+        element: <ExamChapter />,
+      },
+    ],
   },
   {
     path: "/form",
