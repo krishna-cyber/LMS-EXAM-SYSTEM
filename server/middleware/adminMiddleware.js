@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
     if (user?.role !== "admin") {
       return res.status(401).send({
         success: false,
-        message: "AUth Fialed",
+        message: "Not Authorized, ADMIN API",
       });
     } else {
       next();

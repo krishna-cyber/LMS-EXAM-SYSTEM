@@ -13,7 +13,32 @@ router.get("/get-question:id", (req, res) => {
 // create a new question
 router.post(
   "/question/create-question",
-  upload.any(),
+  upload.fields([
+    {
+      name: "questionImage",
+      maxCount: 1,
+    },
+    {
+      name: "questionAudio",
+      maxCount: 1,
+    },
+    {
+      name: "option1Image",
+      maxCount: 1,
+    },
+    {
+      name: "option2Image",
+      maxCount: 1,
+    },
+    {
+      name: "option3Image",
+      maxCount: 1,
+    },
+    {
+      name: "option4Image",
+      maxCount: 1,
+    },
+  ]),
   questionArrange,
   (req, res) => {
     console.log(req.files);
