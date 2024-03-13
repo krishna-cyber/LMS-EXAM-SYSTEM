@@ -23,6 +23,7 @@ app.use("/api", require("./routes/testRoute"));
 app.use("/api", require("./routes/authRoute"));
 app.use("/api", require("./routes/examRoute"));
 app.use("/api", require("./routes/questionRoute"));
+app.use("/api", require("./routes/adminControlRoute"));
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
