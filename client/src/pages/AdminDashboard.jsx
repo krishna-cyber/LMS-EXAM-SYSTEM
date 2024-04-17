@@ -9,6 +9,7 @@ import { PiExam } from "react-icons/pi";
 import { IoMenuOutline } from "react-icons/io5";
 import { Layout, Menu, Button, theme, ConfigProvider } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
+import { CiBoxList } from "react-icons/ci";
 const { Header, Sider, Content } = Layout;
 const AdminDashboard = () => {
   const Navigate = useNavigate();
@@ -64,6 +65,14 @@ const AdminDashboard = () => {
               },
               {
                 key: "3",
+                icon: <CiBoxList />,
+                label: "Student List",
+                onClick: () => {
+                  Navigate("/admin/Student-list");
+                },
+              },
+              {
+                key: "4",
                 icon: <SiMicrosoftexcel />,
                 label: "Student Results",
                 onClick: () => {
@@ -71,7 +80,7 @@ const AdminDashboard = () => {
                 },
               },
               {
-                key: "4",
+                key: "5",
                 icon: <PiExam />,
                 label: "Add Exam",
                 onClick: () => {

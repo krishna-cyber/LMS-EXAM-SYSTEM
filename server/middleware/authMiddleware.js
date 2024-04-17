@@ -20,6 +20,7 @@ module.exports = async (req, res, next) => {
     console.log(error);
     return res.status(401).send({
       success: false,
+      user: null,
       error,
       message: "Auth Failedd",
     });

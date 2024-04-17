@@ -18,11 +18,18 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import StudentRegisterForm from "./components/StudentRegisterForm.jsx";
+import AddExam from "./components/AddExam.jsx";
+import StudentList from "./components/StudentList.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/",
+    element: <App />,
     errorElement: <ErrorPage />,
   },
   {
@@ -39,12 +46,16 @@ const router = createBrowserRouter([
         element: <StudentRegisterForm />,
       },
       {
+        path: "/admin/student-list",
+        element: <StudentList />,
+      },
+      {
         path: "/admin/student-results",
         element: <p>Student Results</p>,
       },
       {
         path: "/admin/add-exam",
-        element: <ExamChapter />,
+        element: <AddExam />,
       },
     ],
   },
@@ -53,33 +64,7 @@ const router = createBrowserRouter([
     element: <QuestionForm />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: "/",
-    element: <Dashboard />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "study",
-        element: <p>Hello study</p>,
-      },
-      {
-        path: "dashboard",
-        element: <p>Hello study</p>,
-      },
-      {
-        path: "exams",
-        element: <Exams />,
-      },
-      {
-        path: "resources",
-        element: <p>Hello resources</p>,
-      },
-      {
-        path: "chapter-test",
-        element: <ExamChapter />,
-      },
-    ],
-  },
+
   {
     path: "exam_start/:id",
     element: <ExamQuestions />,

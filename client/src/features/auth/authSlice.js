@@ -2,6 +2,8 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import { getCurrentUser, userLogin, userRegister } from "./authActions";
+import { message } from "antd";
+import { toast } from "react-toastify";
 
 const token = localStorage.getItem("token")
   ? localStorage.getItem("token")
@@ -56,10 +58,11 @@ const authSlice = createSlice({
     builder.addCase(getCurrentUser.fulfilled, (state, { payload }) => {
       state.loading = false;
       state.user = payload.user;
+      state.message = payload.message;
     });
     builder.addCase(getCurrentUser.rejected, (state, { payload }) => {
       state.loading = false;
-      state.error = payload;
+      state.error = payload.message;
     });
   },
 });

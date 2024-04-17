@@ -7,15 +7,20 @@ import { toast } from "react-toastify";
 export const userLogin = createAsyncThunk(
   "auth/login",
   async ({ role, email, password }) => {
-    return await API.post("/api/auth/login", { role, email, password }).then(
-      (res) => {
+    return await API.post("/api/auth/login", { role, email, password })
+      .then((res) => {
         if (res.data.success) {
+          toast.success("User Logged In Successfully");
           localStorage.setItem("token", res.data.token);
           window.location.replace("/");
         }
         return res.data;
-      }
-    );
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`Something went wrong , try again later`);
+        return error.response.data;
+      });
   }
 );
 
@@ -67,8 +72,32 @@ export const userRegister = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk(
   "auth/getCurrentUser",
   async () => {
-    return await API.get("/api/auth/current-user").then((res) => {
-      return res.data;
-    });
+    return await API.get("/api/auth/current-user")
+      .then((res) => {
+        console.log(res.data);
+        return res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(`Session Expired, Login Again`);
+        return error.response.data;
+      });
   }
 );
+
+export const userLogout = createAsyncThunk("auth/logout", async () => {
+  return await API.get("/api/auth/logout")
+    .then((res) => {
+      if (res.data.success) {
+        toast.success("User Logged Out Successfully");
+        localStorage.removeItem("token");
+        window.location.replace("/login");
+      }
+      return res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(`Something went wrong , try again later`);
+      return error.response.data;
+    });
+});

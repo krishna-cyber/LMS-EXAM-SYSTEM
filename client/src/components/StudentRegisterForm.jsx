@@ -2,7 +2,9 @@
 
 import { Form, Input, DatePicker, Upload, Modal, Button } from "antd";
 import FormList from "antd/es/form/FormList";
+import generator from "generate-password-browser";
 import { useState } from "react";
+import { IoSync } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -17,6 +19,10 @@ const StudentRegisterForm = () => {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
   const normFile = (e) => {
     if (Array.isArray(e)) {
       return e;
@@ -24,7 +30,7 @@ const StudentRegisterForm = () => {
     return e?.fileList;
   };
   const onFinish = (values) => {
-    console.log(values);
+    console.log(values, firstName, lastName);
   };
   const handleCancel = () => setPreviewOpen(false);
   const handlePreview = async (file) => {
@@ -56,15 +62,13 @@ const StudentRegisterForm = () => {
   );
   return (
     <Form className=' w-[45%]' onFinish={onFinish}>
-      <Form.Item name='Username' required label='Name'>
-        <Form layout='inline' onFinish={onFinish}>
-          <Form.Item name='fistName'>
-            <Input placeholder=' First Name' />
-          </Form.Item>
-          <Form.Item name='lastName'>
-            <Input placeholder=' Last Name' />
-          </Form.Item>
-        </Form>
+      <Form.Item
+        className=' w-[60%]'
+        name='Username'
+        hasFeedback
+        required
+        label='Full Name'>
+        <Input allowClear placeholder=' UserName' />
       </Form.Item>
       <Form.Item
         name='email'
@@ -106,8 +110,26 @@ const StudentRegisterForm = () => {
         label='Mobile'>
         <Input className=' w-[60%]' allowClear placeholder='Mobile' />
       </Form.Item>
+      <Form.Item name='password' hasFeedback required label='Generate Password'>
+        <Input
+          disabled
+          value={password}
+          className=' w-[60%]'
+          allowClear
+          placeholder='Click button to generate password'
+        />
+        <Button
+          icon={<IoSync />}
+          className=' ml-3 w-fit'
+          type='primary'
+          onClick={() => {
+            setPassword(generator.generate({ length: 10, numbers: true }));
+          }}>
+          Generate
+        </Button>
+      </Form.Item>
       <Form.Item
-        label='Upload'
+        label='Photo'
         valuePropName='fileList'
         getValueFromEvent={normFile}>
         <Upload

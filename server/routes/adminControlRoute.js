@@ -33,3 +33,5 @@ router.get(
   adminMiddleware,
   getAllStudents
 );
+
+module.exports = router;

@@ -11,7 +11,7 @@ require("dotenv").config();
 
 // connecting to database
 dbConnect();
-
+app.disable("etag");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
