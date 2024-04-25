@@ -30,7 +30,7 @@ const StudentRegisterForm = () => {
     return e?.fileList;
   };
   const onFinish = (values) => {
-    console.log(values, firstName, lastName);
+    console.log(values, fileList, firstName, lastName);
   };
   const handleCancel = () => setPreviewOpen(false);
   const handlePreview = async (file) => {
@@ -88,7 +88,10 @@ const StudentRegisterForm = () => {
         <Input className=' w-[60%]' allowClear placeholder='Email' />
       </Form.Item>
       <Form.Item name='dob' hasFeedback required label='Date of Birth'>
-        <DatePicker placeholder=' Date of Birth' />
+        <DatePicker
+          format={(value) => `${value.format("YYYY-MM-DD")}`}
+          placeholder=' Date of Birth'
+        />
       </Form.Item>
       <Form.Item name='address' hasFeedback required label='Address'>
         <Input className=' w-[60%]' placeholder='Address' />

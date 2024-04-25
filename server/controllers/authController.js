@@ -3,6 +3,7 @@
 const userModel = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
 const registerController = async (req, res) => {
   try {
@@ -137,9 +138,41 @@ const logoutController = async (req, res) => {
   res.end();
 };
 
+// student register controller
+const studentResiterController = async (req, res) => {
+  try {
+    console.log(req.body);
+    console.log(req.files);
+    req.files.forEach((file) => {
+      // Get the original file path
+      const originalFilePath = file.path;
+
+      // Get the file name
+      const fileName = path.basename(originalFilePath);
+
+      // Construct the new file path relative to your public directory
+      const relativeFilePath = path.join("assets\\exams", fileName);
+
+      // Update the file object with the new path
+      file.path = relativeFilePath;
+      console.log(file);
+    });
+    const exisitingUser = await userModel.findOne({ email: req.body.email });
+    res.send("student register route hit");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Student Register  API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   registerController,
   loginController,
   currentUserController,
   logoutController,
+  studentResiterController,
 };
